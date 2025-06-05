@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Perpisahan untuk Pa Sigit</title>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Open Sans', sans-serif;
+      background: linear-gradient(135deg, #f8d3d3, #ffe6f0);
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      position: relative;
+      color: #333;
+    }
+
+    .container {
+      background: #fff;
+      padding: 50px 40px;
+      border-radius: 25px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+      text-align: center;
+      max-width: 750px;
+      z-index: 2;
+      animation: fadeIn 1.5s ease-out forwards;
+      border: 4px double #ff9aa2;
+      position: relative;
+    }
+
+    h1 {
+      font-family: 'Great Vibes', cursive;
+      font-size: 3.8rem;
+      color: #d63031;
+      margin-bottom: 15px;
+      text-shadow: 0 0 12px rgba(255, 200, 200, 0.7);
+    }
+
+    h2 {
+      font-size: 1.4rem;
+      font-weight: 600;
+      color: #555;
+      margin-bottom: 30px;
+    }
+
+    p {
+      font-size: 1.15rem;
+      line-height: 1.9;
+      color: #444;
+    }
+
+    .footer {
+      margin-top: 30px;
+      font-size: 1rem;
+      color: #777;
+      font-style: italic;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: scale(0.95);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    /* Ornamen hias sudut */
+    .corner-deco {
+      position: absolute;
+      width: 60px;
+      height: 60px;
+      background: url('https://cdn-icons-png.flaticon.com/512/3460/3460929.png') no-repeat center;
+      background-size: contain;
+      opacity: 0.3;
+    }
+
+    .corner-deco.tl { top: -20px; left: -20px; }
+    .corner-deco.tr { top: -20px; right: -20px; transform: scaleX(-1); }
+    .corner-deco.bl { bottom: -20px; left: -20px; transform: scaleY(-1); }
+    .corner-deco.br { bottom: -20px; right: -20px; transform: scale(-1); }
+
+    /* Bunga jatuh */
+    .falling-flower {
+      position: absolute;
+      width: 24px;
+      height: 24px;
+      background: url('https://cdn-icons-png.flaticon.com/512/818/818247.png') no-repeat center;
+      background-size: contain;
+      animation: fall 8s linear infinite;
+      opacity: 0.8;
+    }
+
+    @keyframes fall {
+      0% {
+        transform: translateY(-10vh) rotate(0deg);
+        opacity: 0;
+      }
+      50% {
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(110vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+
+    /* Sparkle */
+    .sparkle {
+      position: absolute;
+      width: 8px;
+      height: 8px;
+      background: white;
+      border-radius: 50%;
+      box-shadow: 0 0 6px #fff;
+      animation: twinkle 2s infinite ease-in-out;
+    }
+
+    @keyframes twinkle {
+      0%, 100% { opacity: 0.2; }
+      50% { opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Dekorasi Ornamen -->
+  <div class="corner-deco tl"></div>
+  <div class="corner-deco tr"></div>
+  <div class="corner-deco bl"></div>
+  <div class="corner-deco br"></div>
+
+  <!-- Bunga & Sparkle -->
+  <div id="flowerContainer"></div>
+  <div id="sparkleContainer"></div>
+
+  <!-- Konten Ucapan -->
+  <div class="container">
+    <h1>Terima Kasih, Pa Sigit</h1>
+    <h2>Dari kami, Kelompok 4 dan Kelompok 7</h2>
+    <p>
+      Setiap kata yang Bapak sampaikan bukan hanya sekadar pelajaran, tapi juga inspirasi.<br><br>
+      Terima kasih atas kesabaran, ketegasan, dan semangat yang Bapak berikan selama ini.<br><br>
+      Semoga langkah Bapak selalu diberkahi, dan kenangan ini abadi dalam hati kami.
+    </p>
+    <div class="footer">Dengan hormat dan penuh rasa terima kasih,<br>Kelompok 4 & Kelompok 7 💐</div>
+  </div>
+
+  <!-- Script untuk bunga & sparkle -->
+  <script>
+    const flowerContainer = document.getElementById('flowerContainer');
+    const sparkleContainer = document.getElementById('sparkleContainer');
+
+    function createFlower() {
+      const flower = document.createElement('div');
+      flower.classList.add('falling-flower');
+      flower.style.left = Math.random() * 100 + 'vw';
+      flower.style.animationDuration = 6 + Math.random() * 4 + 's';
+      flowerContainer.appendChild(flower);
+      setTimeout(() => flower.remove(), 10000);
+    }
+
+    function createSparkle() {
+      const sparkle = document.createElement('div');
+      sparkle.classList.add('sparkle');
+      sparkle.style.left = Math.random() * 100 + 'vw';
+      sparkle.style.top = Math.random() * 100 + 'vh';
+      sparkle.style.animationDuration = 1 + Math.random() * 2 + 's';
+      sparkleContainer.appendChild(sparkle);
+      setTimeout(() => sparkle.remove(), 3000);
+    }
+
+    setInterval(createFlower, 500);
+    setInterval(createSparkle, 200);
+  </script>
+
+</body>
+</html>
